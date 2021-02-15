@@ -69,6 +69,10 @@ inputs:
   max-items-in-chart:
     description: 'Max data points in a benchmark chart to avoid making the chart too busy. Value must be unsigned integer. No limit by default'
     required: false
+  read-commit-id:
+    description: 'Read the commit id from the workspace. This is useful when you have switched the repository away from the commit that started this action.'
+    required: false
+    default: false
 
 runs:
   using: 'node12'
