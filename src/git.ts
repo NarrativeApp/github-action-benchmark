@@ -53,14 +53,8 @@ export async function cmd(...args: string[]): Promise<string> {
 }
 
 function getRemoteUrl(token: string): string {
-    /* eslint-disable @typescript-eslint/camelcase */
-    const fullName = github.context.payload.repository?.full_name;
-    /* eslint-enable @typescript-eslint/camelcase */
-
-    if (!fullName) {
-        throw new Error(`Repository info is not available in payload: ${JSON.stringify(github.context.payload)}`);
-    }
-
+    const repo = github.context.repo;
+    const fullName = `${repo.owner}/${repo.repo}`;
     return `https://x-access-token:${token}@github.com/${fullName}.git`;
 }
 
